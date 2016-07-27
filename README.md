@@ -5,7 +5,6 @@
 - Based on the super slim [tklx/base][base] (Debian GNU/Linux).
 - Nginx installed directly from Debian.
 - Uses [tini][tini] for zombie reaping and signal forwarding.
-- Uses [gosu][gosu] for dropping privileges if needed.
 - Includes ``VOLUME /var/www`` for easy webroot access.
 - Includes ``EXPOSE 80 443``, so standard container linking will make it
   automatically available to the linked containers.
@@ -36,6 +35,5 @@ tracking of bugs, issues and feature requests.
 
 [base]: https://github.com/tklx/base
 [tini]: https://github.com/krallin/tini
-[gosu]: https://github.com/tianon/gosu
 [semver]: http://semver.org/
 [tracker]: https://github.com/tklx/tracker/issues
