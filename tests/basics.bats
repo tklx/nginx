@@ -17,20 +17,17 @@ _init() {
     echo >&2 "init: running $IMAGE"
     export CNAME="$APPNAME-$RANDOM-$RANDOM"
     export CID="$(docker run -d --name "$CNAME" "$IMAGE")"
-    trap "docker rm -vf $CID > /dev/null" EXIT
     [ "$CIRCLECI" = "true" ] || trap "docker rm -vf $CID > /dev/null" EXIT
 }
 [ -n "$TEST_SUITE_INITIALIZED" ] || _init
 
 @test "port 80 accepts connections" {
-    ip=$(docker inspect "$CID" | grep '"IPAddress"' | head -1 | cut -d'"' -f4)
-    curl -q "http://$ip"
+    ip=$(docker inspect "$CID" | grep '\"IPAddress\"' | head -1 | cut -d':' -f2 | tr -d '", ')
+    curl -s "http://$ip"
     [ $? -eq 0 ]
 }
 
 # @test "port 443 accepts connections" {
 #     curl -q "https://$ip"
 # }
-
-docker stop "$id"
 
