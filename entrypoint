@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+if [ "${1:0:1}" = "-" ]; then
+       set -- nginx "$@"
+fi
+
+if [ "$1" = "nginx" ]; then
+   # forward access and error logs to docker log collector
+   [ -z "$NOSTDOUTREDIR" ] && ln -sf /dev/stdout /var/log/nginx/access.log
+   [ -z "$NOSTDERRREDIR" ] && ln -sf /dev/stderr /var/log/nginx/error.log
+
+   # run nginx in the foreground
+   exec "$@" -g "daemon off;"
+fi
+
+exec "$@"

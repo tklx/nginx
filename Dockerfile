@@ -18,8 +18,11 @@ RUN set -x \
 RUN set -x \
     && apt-get update \
     && apt-get -y install nginx \
-    && apt-clean --aggressive
+    && apt-clean --aggressive \
+    && sed -i "s/\(worker_processes\) .*;$/\1 1;/" /etc/nginx/nginx.conf 
 
-ENTRYPOINT ["/tini", "--"]
-CMD ["nginx", "-g", "daemon off;"]
+COPY entrypoint /entrypoint
+
+ENTRYPOINT ["/tini", "--", "/entrypoint"]
+CMD ["nginx"]
 EXPOSE 80 443
