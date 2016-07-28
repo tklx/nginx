@@ -30,6 +30,7 @@ $ docker run --name some-nginx -d tklx/nginx --volumes-from=some-ssl-data:ro
 $ docker run -it --rm tklx/base:0.1.0 --volumes-from=some-nginx:rw
 base$ echo 'server { listen 443 ssl; server_name www.example.com; ssl_certificate /etc/ssl/private/www.example.com; ssl_certificate_key /etc/ssl/private/www.example.com.key; root /var/www; }' >> /etc/nginx/sites-available/www.example.com
 base$ ln -s /etc/nginx/sites-available/www.example.com /etc/nginx/sites-enabled/www.example.com
+base$ exit
 $ docker exec some-nginx nginx -s reload
 $ docker run --name some-app --link some-nginx:nginx -d app-that-uses-nginx
 ```
