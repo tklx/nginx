@@ -20,9 +20,6 @@ RUN set -x \
     && apt-get -y install nginx \
     && apt-clean --aggressive
 
-VOLUME /var/www
-VOLUME /etc/nginx
-
 ENTRYPOINT ["/tini", "--"]
 CMD ["nginx", "-g", "daemon off;"]
 EXPOSE 80 443
