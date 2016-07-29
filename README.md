@@ -147,6 +147,13 @@ server {
 
 For further info on SSL termination, please refer to the [official documentation][nginx-ssl-termination].
 
+## Automated builds
+
+The [Docker image](https://hub.docker.com/r/tklx/nginx/) is built, tested and pushed by [CircleCI](https://circleci.com/gh/tklx/nginx) from source hosted on [GitHub](https://github.com/tklx/nginx).
+
+* Tag: ``x.y.z`` refers to a [release](https://github.com/tklx/nginx/releases) (recommended).
+* Tag: ``latest`` refers to the master branch.
+
 ## Status
 
 Currently on major version zero (0.y.z). Per [Semantic Versioning][semver],
