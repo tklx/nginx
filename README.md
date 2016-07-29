@@ -30,11 +30,12 @@ $ docker run --name some-nginx -v /some/content:/var/www/html:ro -v /some/config
 ```console
 $ ls
 html/ default Dockerfile
+
 $ cat Dockerfile
 FROM tklx/nginx
-
 COPY html /var/www/html
 COPY default /etc/nginx/sites-available/default
+
 $ docker build -t some-content .
 $ docker run --name some-nginx -d some-content
 ```
