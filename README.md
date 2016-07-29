@@ -10,6 +10,7 @@
   automatically available to the linked containers.
 - Can be coupled with another container to provide SSL access and/or
   proxying.
+- Configured to forward access and error logs to docker log collector.
 
 ## Usage
 
@@ -147,6 +148,12 @@ server {
 ```
 
 For further info on SSL termination, please refer to the [official documentation][nginx-ssl-termination].
+
+### Tips
+
+To disable access and/or error logs forwarding to the docker log
+collector, the following environmental variables can be set:
+``NOSTDOUTREDIR`` ``NOSTDERRREDIR``.
 
 ## Automated builds
 
