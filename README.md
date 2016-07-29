@@ -1,5 +1,10 @@
-# tklx/nginx - web server
+# tklx/nginx - Web server
 [![CircleCI](https://circleci.com/gh/tklx/nginx.svg?style=shield)](https://circleci.com/gh/tklx/nginx)
+
+[Nginx][nginx] (pronounced "engine x") is a web server, load balancer
+and reverse proxy with a strong focus on performance, high concurency
+(over 10,000 simultaneous connections), and low memory usage. It powers
+many of the world's largest websites.
 
 ## Features
 
@@ -173,6 +178,7 @@ stable. Anything may change at any time.
 TKLX uses a central [issue tracker][tracker] on GitHub for reporting and
 tracking of bugs, issues and feature requests.
 
+[nginx]: http://nginx.org/
 [base]: https://github.com/tklx/base
 [tini]: https://github.com/krallin/tini
 [nginx-ssl]: https://nginx.org/en/docs/http/configuring_https_servers.html
