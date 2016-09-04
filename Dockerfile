@@ -1,5 +1,11 @@
 FROM tklx/base:0.1.0
 
+RUN set -x \
+    && sed -i 's/jessie/testing/g' /etc/apt/sources.list.d/*.list \
+    && apt-get -y update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade \
+    && apt-clean --aggressive
+
 ARG TINI_VERSION=v0.9.0
 RUN set -x \
     && TINI_URL=https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini \
