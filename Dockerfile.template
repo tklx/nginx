@@ -1,0 +1,19 @@
+# !include frombase
+# !include tini
+
+ARG NEED_USER="www-data"
+
+# !include security
+
+# App-specific config
+RUN set -x \
+    && apt-get update \
+    && apt-get -y install nginx \
+    && apt-clean --aggressive \
+    && sed -i "s/\(worker_processes\) .*;$/\1 1;/" /etc/nginx/nginx.conf
+
+COPY entrypoint /entrypoint
+
+ENTRYPOINT ["/tini", "--", "/entrypoint"]
+CMD ["nginx"]
+EXPOSE 80 443
