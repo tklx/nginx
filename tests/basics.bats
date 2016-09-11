@@ -16,7 +16,7 @@ _init() {
 
     echo >&2 "init: running $IMAGE"
     export CNAME="$APPNAME-$RANDOM-$RANDOM"
-    export CID="$(docker run -d --name "$CNAME" "$IMAGE")"
+    export CID="$(docker run -d --name "$CNAME" "$IMAGE" -p 80:80)"
     [ "$CIRCLECI" = "true" ] || trap "docker rm -vf $CID > /dev/null" EXIT
 }
 [ -n "$TEST_SUITE_INITIALIZED" ] || _init
