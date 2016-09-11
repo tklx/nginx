@@ -21,11 +21,11 @@ _init() {
 }
 [ -n "$TEST_SUITE_INITIALIZED" ] || _init
 
-@test "port 80 accepts connections" {
-    ip=$(docker inspect "$CID" | grep '\"IPAddress\"' | head -1 | cut -d':' -f2 | tr -d '", ')
-    curl -s "http://$ip"
-    [ $? -eq 0 ]
-}
+# @test "port 80 accepts connections" {
+#   ip=$(docker inspect "$CID" | grep '\"IPAddress\"' | head -1 | cut -d':' -f2 | tr -d '", ')
+#   curl -s "http://$ip"
+#   [ $? -eq 0 ]
+# }
 
 # @test "port 443 accepts connections" {
 #     curl -q "https://$ip"
